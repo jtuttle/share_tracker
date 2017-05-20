@@ -1,0 +1,16 @@
+module Remote
+  class UrlShortenerService
+    def initialize
+
+    end
+
+    def service_url
+      URL_SHORTENER_SERVICE_URL
+    end
+
+    def create_short_url(long_url)
+      response = RestClient.post("#{service_url}/url/create", { url: long_url })
+      JSON.parse(response)
+    end
+  end
+end

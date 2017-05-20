@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20170519232024) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "original_url"
+    t.integer "visit_count", default: 0
   end
 
 end
