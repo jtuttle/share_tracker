@@ -12,5 +12,10 @@ module Remote
       response = RestClient.post("#{service_url}/url/create", { url: long_url })
       JSON.parse(response)
     end
+
+    def get_urls
+      response = RestClient.get("#{service_url}/urls")
+      JSON.parse(response)["urls"]
+    end
   end
 end

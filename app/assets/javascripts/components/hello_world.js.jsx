@@ -4,6 +4,6 @@ class HelloWorld extends React.Component {
       <div>
         {this.props.message}
       </div>
-    )
+    );
   }
 }
