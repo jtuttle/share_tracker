@@ -35,6 +35,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'rest-client', '~> 2.0.2'
+gem 'react-rails', '~> 2.2.0'
 
 group :development, :test do
   gem 'pry-rails', '~> 0.3.6'
