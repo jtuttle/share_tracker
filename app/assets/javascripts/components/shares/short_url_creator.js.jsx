@@ -30,7 +30,7 @@ class ShortUrlCreator extends React.Component {
       )
     } else {
       return (
-        <div>
+        <div id="create-done-message-div">
           {this.props.doneMessage}
         </div>
       )

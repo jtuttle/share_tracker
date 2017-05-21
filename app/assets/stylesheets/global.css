@@ -1,3 +1,7 @@
+/*
+TODO: Use a smarter CSS system like bootstrap-sass
+*/
+
 th, td {
     padding-left: 40px;
     padding-right: 40px;
@@ -39,4 +43,8 @@ form {
     width: 200px;
     margin-left: 10px;
     margin-right: 10px;
+}
+
+#create-done-message-div {
+    padding-left: 40px;
 }

@@ -19,11 +19,12 @@ class SharesPage extends React.Component {
   }
 
   handleLogout() {
-    promise.del("/logout").then(function(error, response, ehr) {
-      if(!error) {
-        window.location.replace('/login');
-      }
-    });
+    promise.del("/logout").
+            then(function(error, response, ehr) {
+              if(!error) {
+                window.location.replace('/login');
+              }
+            });
   }
 
   loadShortUrls() {
@@ -32,9 +33,9 @@ class SharesPage extends React.Component {
     promise.get(this.props.url_service_host + "/urls.json",
                 { owner_identifier: this.props.user_identifier }).
             then(function(error, response, ehr) {
-      var shortUrls = JSON.parse(response).urls;
-      self.setState({ shortUrls: shortUrls });
-    });
+              var shortUrls = JSON.parse(response).urls;
+              self.setState({ shortUrls: shortUrls });
+            });
   }
 
   createShortUrl(long_url) {
@@ -44,19 +45,19 @@ class SharesPage extends React.Component {
                  { url: long_url,
                    owner_identifier: this.props.user_identifier }).
             then(function(error, response, ehr) {
-      if(error) {
-        self.setState({ createDoneMessage: JSON.parse(response).error });
-      } else {
-        var message = 'Created short URL: ' + JSON.parse(response).url
-        self.setState({ value: '', createDoneMessage: message });
-      }
+              if(error) {
+                self.setState({ createDoneMessage: JSON.parse(response).error });
+              } else {
+                var message = 'Created short URL: ' + JSON.parse(response).url
+                self.setState({ value: '', createDoneMessage: message });
+              }
 
-      setTimeout(function() {
-        self.setState({ createDoneMessage: '' });
-      }, 2000);
-
-      self.loadShortUrls();
-    });
+              setTimeout(function() {
+                self.setState({ createDoneMessage: '' });
+              }, 2000);
+              
+              self.loadShortUrls();
+            });
   }
   
   render() {
