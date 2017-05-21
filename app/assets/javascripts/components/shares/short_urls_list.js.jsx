@@ -1,9 +1,9 @@
-class ShareList extends React.Component {
+class ShortUrlsList extends React.Component {
   render() {
-    var shareListData = [];
+    var shortUrls = [];
     
-    if(this.props.shareListData != null) {
-      shareListData = this.props.shareListData;
+    if(this.props.shortUrls != null) {
+      shortUrls = this.props.shortUrls;
     }
 
     return (
@@ -16,8 +16,8 @@ class ShareList extends React.Component {
           </tr>
         </thead>
         <tbody>
-          {shareListData.map(function(shareItemData, i) {
-            return <ShareItem shareItemData={shareItemData} key={i} />
+          {shortUrls.map(function(shortUrl, i) {
+            return <ShortUrlItem shortUrl={shortUrl} key={i} />
            })}
         </tbody>
       </table>
