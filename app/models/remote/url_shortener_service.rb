@@ -5,7 +5,7 @@ module Remote
     end
 
     def service_url
-      URL_SHORTENER_SERVICE_URL
+      URL_SHORTENER_SERVICE_HOST
     end
 
     def create_short_url(long_url)

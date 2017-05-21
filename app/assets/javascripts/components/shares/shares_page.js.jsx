@@ -29,7 +29,7 @@ class SharesPage extends React.Component {
   loadShortUrls() {
     var self = this;
 
-    promise.get("http://localhost:3001/urls.json",
+    promise.get(this.props.url_service_host + "/urls.json",
                 { owner_identifier: this.props.user_identifier }).
             then(function(error, response, ehr) {
       var shortUrls = JSON.parse(response).urls;
@@ -40,7 +40,7 @@ class SharesPage extends React.Component {
   createShortUrl(long_url) {
     self = this;
     
-    promise.post("http://localhost:3001/url/create",
+    promise.post(this.props.url_service_host + "/url/create",
                  { url: long_url,
                    owner_identifier: this.props.user_identifier }).
             then(function(error, response, ehr) {

@@ -1,5 +1,5 @@
 class SharesController < RestrictedAccessController
   def index
-    @urls = Remote::UrlShortenerService.new.get_urls
+    @share_service_url = URL_SHORTENER_SERVICE_HOST
   end
 end
