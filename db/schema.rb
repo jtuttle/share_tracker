@@ -10,16 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170519232024) do
+ActiveRecord::Schema.define(version: 20170521181712) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
 
-  create_table "short_urls", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.text "original_url"
-    t.integer "visit_count", default: 0
+  create_table "users", force: :cascade do |t|
+    t.text "username"
+    t.text "password"
+    t.text "salt"
+    t.uuid "public_identifier", default: -> { "uuid_generate_v4()" }
   end
 
 end

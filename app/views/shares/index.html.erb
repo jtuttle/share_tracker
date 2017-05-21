@@ -1,1 +1,5 @@
-<%= react_component("SharesPage", { }) %>
+<%= react_component("SharesPage",
+    {
+      username: @current_user.username,
+      user_identifier: @current_user.public_identifier
+    }) %>

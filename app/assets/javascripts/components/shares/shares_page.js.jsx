@@ -18,10 +18,20 @@ class SharesPage extends React.Component {
     self.loadShortUrls();
   }
 
+  handleLogout() {
+    promise.del("/logout").then(function(error, response, ehr) {
+      if(!error) {
+        window.location.replace('/login');
+      }
+    });
+  }
+
   loadShortUrls() {
     var self = this;
 
-    promise.get("http://localhost:3001/urls.json").then(function(error, response, ehr) {
+    promise.get("http://localhost:3001/urls.json",
+                { owner_identifier: this.props.user_identifier }).
+            then(function(error, response, ehr) {
       var shortUrls = JSON.parse(response).urls;
       self.setState({ shortUrls: shortUrls });
     });
@@ -30,7 +40,9 @@ class SharesPage extends React.Component {
   createShortUrl(long_url) {
     self = this;
     
-    promise.post("http://localhost:3001/url/create", { url: long_url }).
+    promise.post("http://localhost:3001/url/create",
+                 { url: long_url,
+                   owner_identifier: this.props.user_identifier }).
             then(function(error, response, ehr) {
       if(error) {
         self.setState({ createDoneMessage: JSON.parse(response).error });
@@ -50,6 +62,10 @@ class SharesPage extends React.Component {
   render() {
     return (
       <div>
+        <span id="welcome-span">Welcome {this.props.username}!</span>
+        <span id="logout-button">
+          <input type="button" value="Logout" onClick={this.handleLogout} />
+        </span>
         <div id="url-creator">
           <ShortUrlCreator createMethod={this.createShortUrl}
                            doneMessage={this.state.createDoneMessage}

@@ -12,7 +12,7 @@ class ShortUrlCreator extends React.Component {
   }
   
   handleSubmit(event) {
-    event.preventDefault();    
+    event.preventDefault();
 
     this.props.createMethod(this.state.value);
   }
@@ -23,7 +23,7 @@ class ShortUrlCreator extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <label>
             Create Short URL:
-            <input type="text" value={this.state.value} onChange={this.handleChange} />
+            <input id="create-url-input" type="text" value={this.state.value} onChange={this.handleChange} />
           </label>
           <input type="submit" value="Submit" />
         </form>
