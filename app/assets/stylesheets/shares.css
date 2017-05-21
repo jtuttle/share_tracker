@@ -1,0 +1,8 @@
+table, th, td {
+/*   border: 1px solid black;*/
+}
+
+th, td {
+    padding-left: 80px;
+    margin-right: 10px;
+}

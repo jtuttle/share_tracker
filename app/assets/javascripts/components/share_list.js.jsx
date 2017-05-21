@@ -1,11 +1,26 @@
 class ShareList extends React.Component {
   render() {
+    var shareListData = [];
+    
+    if(this.props.shareListData != null) {
+      shareListData = this.props.shareListData;
+    }
+
     return (
-      <div>
-        {this.props.share_data.map(function(share, i) {
-          return <ShareItem share_item_data={share} key={i} />
-        })}
-      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Original URL</th>
+            <th>Short URL</th>
+            <th>Visit Count</th>
+          </tr>
+        </thead>
+        <tbody>
+          {shareListData.map(function(shareItemData, i) {
+            return <ShareItem shareItemData={shareItemData} key={i} />
+           })}
+        </tbody>
+      </table>
     );
   }
 }
