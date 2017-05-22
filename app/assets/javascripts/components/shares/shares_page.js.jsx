@@ -7,6 +7,7 @@ class SharesPage extends React.Component {
     }
 
     this.createShortUrl = this.createShortUrl.bind(this);
+    this.disableShortUrl = this.disableShortUrl.bind(this);
   }
   
   componentDidMount() {
@@ -39,7 +40,7 @@ class SharesPage extends React.Component {
   }
 
   createShortUrl(long_url) {
-    self = this;
+    var self = this;
     
     promise.post(this.props.url_service_host + "/url/create",
                  { url: long_url,
@@ -59,6 +60,17 @@ class SharesPage extends React.Component {
               self.loadShortUrls();
             });
   }
+
+  disableShortUrl(url_identifier) {
+    var self = this;
+    
+    promise.del(this.props.url_service_host + "/url/" + url_identifier).
+            then(function(error, response, ehr) {
+              if(!error) {
+                self.loadShortUrls();
+              }
+            });
+  }
   
   render() {
     return (
@@ -72,7 +84,8 @@ class SharesPage extends React.Component {
                            doneMessage={this.state.createDoneMessage}
           />
         </div>
-        <ShortUrlsList shortUrls={this.state.shortUrls} />
+        <ShortUrlsList shortUrls={this.state.shortUrls}
+                       disableMethod={this.disableShortUrl} />
       </div>
     )
   }
