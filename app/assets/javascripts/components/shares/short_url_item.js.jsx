@@ -16,7 +16,9 @@ class ShortUrlItem extends React.Component {
         <input type="button" value="Disable" onClick={this.handleDisableClick} />
       )
     } else {
-      return "";
+      return (
+        <span>Disabled</span>
+      )
     }
   }
 
