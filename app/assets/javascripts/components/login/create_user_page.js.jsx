@@ -36,13 +36,14 @@ class CreateUserPage extends React.Component {
       <div id="login-form">
         <form>
           <h2>Create an Account</h2>
+          
           <label>
-            <div>Username:</div>
+            <div>Username (6+ characters)</div>
             <input className="form-input" type="text" value={this.state.username} onChange={this.handleUsernameChange} />
           </label>
           <br/>
           <label>
-            <div>Password:</div>
+            <div>Password (8+ characters)</div>
             <input className="form-input" type="password" value={this.state.password} onChange={this.handlePasswordChange} />
           </label>
           <br/>

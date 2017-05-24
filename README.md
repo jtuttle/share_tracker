@@ -1,24 +1,11 @@
-# README
+# Share Tracker
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Share Tracker is a single-page Rails + React app I made to act as an interface to my URL shortener gem [Small URL](https://github.com/jtuttle/small_url). It includes a rudimentary homebrewed account login system and provides access to all Small URL features, including:
 
-Things you may want to cover:
+* Creating small URLs
 
-* Ruby version
+* Viewing the visit count for each URL
 
-* System dependencies
+* Disabling URLs
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Association of URLs with an owner
