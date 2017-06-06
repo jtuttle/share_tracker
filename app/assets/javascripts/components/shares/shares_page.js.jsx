@@ -11,17 +11,18 @@ class SharesPage extends React.Component {
   }
   
   componentDidMount() {
-    var self = this;
+    var intervalId =
+      setInterval(() => {
+        this.loadShortUrls();
+      }, 5000);
+
+    this.setState({ intervalId: intervalId });
     
-    setInterval(function() {
-      self.loadShortUrls();
-    }, 5000);
-    
-    self.loadShortUrls();
+    this.loadShortUrls();
   }
   
-  componentDidUnmount() {
-    
+  componentWillUnmount() {
+    clearInterval(this.state.intervalId);
   }
 
   handleLogout() {
@@ -34,45 +35,39 @@ class SharesPage extends React.Component {
   }
 
   loadShortUrls() {
-    var self = this;
-    
     promise.get(this.props.url_service_host + "/urls.json",
                 { owner_identifier: this.props.user_identifier }).
-      then(function(error, response, ehr) {
+      then((error, response, ehr) => {
         var shortUrls = JSON.parse(response).urls;
-        self.setState({ shortUrls: shortUrls });
+        this.setState({ shortUrls: shortUrls });
       });
   }
 
   createShortUrl(long_url) {
-    var self = this;
-    
     promise.post(this.props.url_service_host + "/url/create",
                  { url: long_url,
                    owner_identifier: this.props.user_identifier }).
-      then(function(error, response, ehr) {
+      then((error, response, ehr) => {
         if(error) {
-          self.setState({ createDoneMessage: JSON.parse(response).error });
+          this.setState({ createDoneMessage: JSON.parse(response).error });
         } else {
           var message = 'Created short URL: ' + JSON.parse(response).url;
-          self.setState({ value: '', createDoneMessage: message });
+          this.setState({ value: '', createDoneMessage: message });
         }
         
-        setTimeout(function() {
-          self.setState({ createDoneMessage: '' });
+        setTimeout(() => {
+          this.setState({ createDoneMessage: '' });
         }, 2000);
         
-        self.loadShortUrls();
+        this.loadShortUrls();
       });
   }
 
   disableShortUrl(url_identifier) {
-    var self = this;
-    
     promise.del(this.props.url_service_host + "/url/" + url_identifier).
-      then(function(error, response, ehr) {
+      then((error, response, ehr) => {
         if(!error) {
-          self.loadShortUrls();
+          this.loadShortUrls();
         }
       });
   }

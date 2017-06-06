@@ -17,14 +17,12 @@ class CreateUserPage extends React.Component {
   }
 
   handleSubmit(event) {
-    self = this;
-
     promise.post("/signup",
                  { username: this.state.username,
                    password: this.state.password }).
-      then(function(error, response, ehr) {
+      then((error, response, ehr) => {
         if(error) {
-          self.setState({ errorMessage: JSON.parse(response).error });
+          this.setState({ errorMessage: JSON.parse(response).error });
         } else {
           window.location.replace('/login');
         }

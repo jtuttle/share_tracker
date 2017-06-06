@@ -1,7 +1,5 @@
 class ShortUrlsList extends React.Component {
   render() {
-    var self = this;
-    
     var shortUrls = [];
     
     if(this.props.shortUrls != null) {
@@ -18,10 +16,10 @@ class ShortUrlsList extends React.Component {
           </tr>
         </thead>
         <tbody>
-          {shortUrls.map(function(shortUrl, i) {
+          {shortUrls.map((shortUrl, i) => {
             return <ShortUrlItem key={i}
                                  shortUrl={shortUrl}
-                                 disableMethod={self.props.disableMethod} />
+                                 disableMethod={this.props.disableMethod} />
           })}
         </tbody>
       </table>
