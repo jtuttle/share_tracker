@@ -24,13 +24,13 @@ class LoginPage extends React.Component {
     promise.post("/login",
                  { username: this.state.username,
                    password: this.state.password }).
-            then(function(error, response, ehr) {
-              if(error) {
-                self.setState({ errorMessage: JSON.parse(response).error });
-              } else {
-                window.location.replace('/shares');
-              }
-            })
+      then(function(error, response, ehr) {
+        if(error) {
+          self.setState({ errorMessage: JSON.parse(response).error });
+        } else {
+          window.location.replace('/shares');
+        }
+      });
   }
   
   render() {
@@ -59,6 +59,6 @@ class LoginPage extends React.Component {
           or <a href="/signup">Sign Up</a>
         </div>
       </div>
-    )
+    );
   }
 }

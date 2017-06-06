@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     elsif Physical::User.exists?(username: params[:username])
       render json: { error: "Username taken." }, status: 422
     else
-      salt = ('a'..'z').to_a.shuffle[0,8].join
+      salt = SecureRandom.hex(32)
       
       user_params = {
         username: params[:username],

@@ -27,13 +27,13 @@ class ShortUrlCreator extends React.Component {
           </label>
           <input type="submit" value="Submit" />
         </form>
-      )
+      );
     } else {
       return (
         <div id="create-done-message-div">
           {this.props.doneMessage}
         </div>
-      )
+      );
     }
   }
 }

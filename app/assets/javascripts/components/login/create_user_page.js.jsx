@@ -22,13 +22,13 @@ class CreateUserPage extends React.Component {
     promise.post("/signup",
                  { username: this.state.username,
                    password: this.state.password }).
-            then(function(error, response, ehr) {
-              if(error) {
-                self.setState({ errorMessage: JSON.parse(response).error });
-              } else {
-                window.location.replace('/login');
-              }
-            })
+      then(function(error, response, ehr) {
+        if(error) {
+          self.setState({ errorMessage: JSON.parse(response).error });
+        } else {
+          window.location.replace('/login');
+        }
+      });
   }
   
   render() {
@@ -54,6 +54,6 @@ class CreateUserPage extends React.Component {
           {this.state.errorMessage}
         </div>
       </div>
-    )
+    );
   }
 }

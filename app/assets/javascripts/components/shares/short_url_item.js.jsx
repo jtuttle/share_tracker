@@ -14,11 +14,11 @@ class ShortUrlItem extends React.Component {
     if(!this.props.shortUrl.disabled) {
       return (
         <input type="button" value="Disable" onClick={this.handleDisableClick} />
-      )
+      );
     } else {
       return (
         <span>Disabled</span>
-      )
+      );
     }
   }
 
@@ -40,6 +40,6 @@ class ShortUrlItem extends React.Component {
         <td>{shortUrl.visit_count}</td>
         <td>{this.renderDisableButton()}</td>
       </tr>
-    )
+    );
   }
 }

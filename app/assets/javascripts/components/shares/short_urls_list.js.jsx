@@ -22,7 +22,7 @@ class ShortUrlsList extends React.Component {
             return <ShortUrlItem key={i}
                                  shortUrl={shortUrl}
                                  disableMethod={self.props.disableMethod} />
-           })}
+          })}
         </tbody>
       </table>
     );
